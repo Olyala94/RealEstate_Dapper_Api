@@ -21,6 +21,5 @@ namespace RealEstate_Dapper_Api.Controllers
             var values = await _bottomGridRepository.GetAllBottomGridAsync();
             return Ok(values);
         }
-
     }
 }

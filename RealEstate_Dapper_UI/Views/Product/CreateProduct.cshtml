@@ -27,7 +27,7 @@
                     <br />
                     <label>Kategori</label>
                     <br />
-                    <input type="text" asp-for="title" class="form-control" />
+                    @Html.DropDownListFor(x=>x.categoryid,(List<SelectListItem>)ViewBag.v, new {@class = "form-control"})
                     <br />
                     <label>Fiyat</label>
                     <br />

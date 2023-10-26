@@ -11,7 +11,7 @@ namespace RealEstate_Dapper_Api.Repositories.EmployeeRepositories
 
         void DeleteEmployee(int id);
 
-        void UpdateEmployee(UpdateEmployeeDto updateEmployeeDto);
+        Task UpdateEmployee(UpdateEmployeeDto updateEmployeeDto);
 
         Task<GetByIdEmployeeDto> GetEmployee(int id);
     }

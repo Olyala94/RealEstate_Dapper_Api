@@ -98,10 +98,19 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepositories
                 return values;
             }
         }
+        public string CityNameByMaxProductCount()
+        {
+            string query = "select top(1)City, Count(*) as 'ilan_Sayısı' from Product group by City order by ilan_Sayısı Desc";
 
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
+        }
         public int DifferentCityCount()
         {
-            string query = "select Avg(RoomCount) From ProductDetails";
+            string query = "select Count(Distinct (City)) From Product";
 
             using (var connection = _context.CreateConnection())
             {
@@ -112,7 +121,7 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepositories
 
         public string EmployeeNameByMaxProductCount()
         {
-            string query = "select Avg(RoomCount) From ProductDetails";
+            string query = "select Name,Count(*) 'product_count' from product  inner join Employee on Product.EmployeeID=Employee.EmployeeID Group by Name order by product_count desc";
 
             using (var connection = _context.CreateConnection())
             {
@@ -123,7 +132,7 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepositories
 
         public decimal LastProductPrice()
         {
-            string query = "select Avg(RoomCount) From ProductDetails";
+            string query = "select top(1) price from Product order by ProductID desc";
 
             using (var connection = _context.CreateConnection())
             {
@@ -132,20 +141,9 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepositories
             }
         }
 
-        public string MaxCityNameByMaxProductCount()
-        {
-            string query = "select Avg(RoomCount) From ProductDetails";
-
-            using (var connection = _context.CreateConnection())
-            {
-                var values = connection.QueryFirstOrDefault<string>(query);
-                return values;
-            }
-        }
-
         public string NewestBuildingYear()
         {
-            string query = "select Avg(RoomCount) From ProductDetails";
+            string query = "select top(1)buildyear from ProductDetails order by BuildYear desc";
 
             using (var connection = _context.CreateConnection())
             {
@@ -156,7 +154,7 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepositories
 
         public string OldestBuildingYear()
         {
-            string query = "select Avg(RoomCount) From ProductDetails";
+            string query = "select top(1)buildyear from ProductDetails order by BuildYear asc";
 
             using (var connection = _context.CreateConnection())
             {
@@ -167,7 +165,7 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepositories
 
         public int PassiveCategoryCount()
         {
-            string query = "select Avg(RoomCount) From ProductDetails";
+            string query = "select Count(*) from Category Where CategoryStatus=0";
 
             using (var connection = _context.CreateConnection())
             {
@@ -178,7 +176,7 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepositories
 
         public int ProductCount()
         {
-            string query = "select Avg(RoomCount) From ProductDetails";
+            string query = "select Count(*) from Product";
 
             using (var connection = _context.CreateConnection())
             {

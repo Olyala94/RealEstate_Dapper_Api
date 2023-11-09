@@ -25,6 +25,80 @@ namespace RealEstate_Dapper_Api.Controllers
         {
             return Ok(_statisticsRepository.ActiveEmployeeCount());
         }
+
+        [HttpGet("ApartmentCount")]
+        public IActionResult ApartmentCount()
+        {
+            return Ok(_statisticsRepository.ApartmentCount());
+        }
         
+        [HttpGet("AverageProductPriceByRent")]
+        public IActionResult AverageProductPriceByRent()
+        {
+            return Ok(_statisticsRepository.AverageProductPriceByRent());
+        }
+
+        [HttpGet("AverageProductPriceBySale")]
+        public IActionResult AverageProductPriceBySale()
+        {
+            return Ok(_statisticsRepository.AverageProductPriceBySale());
+        }
+
+        [HttpGet("AverageRoomCount")]
+        public IActionResult AverageRoomCount()
+        {
+            return Ok(_statisticsRepository.AverageRoomCount());
+        }
+
+        [HttpGet("CategoryCount")]
+        public IActionResult CategoryCount()
+        {
+            return Ok(_statisticsRepository.CategoryCount());
+        }
+
+        [HttpGet("CategoryNameByMaxProductCount")]
+        public IActionResult CategoryNameByMaxProductCount()
+        {
+            try
+            {
+                string categoryName = _statisticsRepository.CategoryNameByMaxProductCount();
+
+                if (string.IsNullOrEmpty(categoryName))
+                {
+                    return NotFound("No data found.");
+                }
+
+                return Ok($"The category with the highest product count is: {categoryName}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+            //return Ok(_statisticsRepository.CategoryNameByMaxProductCount());
+        }
+
+        //[HttpGet("CategoryCount")]
+        //public IActionResult CategoryCount()
+        //{
+        //    return Ok(_statisticsRepository.CategoryCount());
+        //}
+
+        //[HttpGet("CategoryCount")]
+        //public IActionResult CategoryCount()
+        //{
+        //    return Ok(_statisticsRepository.CategoryCount());
+        //}
+
+        //[HttpGet("CategoryCount")]
+        //public IActionResult CategoryCount()
+        //{
+        //    return Ok(_statisticsRepository.CategoryCount());
+        //}
+
+        //[HttpGet("CategoryCount")]
+        //public IActionResult CategoryCount()
+        //{
+        //    return Ok(_statisticsRepository.CategoryCount());
+        //}
     }
 }

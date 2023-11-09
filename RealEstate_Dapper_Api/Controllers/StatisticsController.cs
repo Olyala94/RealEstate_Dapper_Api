@@ -59,22 +59,22 @@ namespace RealEstate_Dapper_Api.Controllers
         [HttpGet("CategoryNameByMaxProductCount")]
         public IActionResult CategoryNameByMaxProductCount()
         {
-            try
-            {
-                string categoryName = _statisticsRepository.CategoryNameByMaxProductCount();
+            //try
+            //{
+            //    string categoryName = _statisticsRepository.CategoryNameByMaxProductCount();
 
-                if (string.IsNullOrEmpty(categoryName))
-                {
-                    return NotFound("No data found.");
-                }
+            //    if (string.IsNullOrEmpty(categoryName))
+            //    {
+            //        return NotFound("No data found.");
+            //    }
 
-                return Ok($"The category with the highest product count is: {categoryName}");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"An error occurred: {ex.Message}");
-            }
-            //return Ok(_statisticsRepository.CategoryNameByMaxProductCount());
+            //    return Ok($"The category with the highest product count is: {categoryName}");
+            //}
+            //catch (Exception ex)
+            //{
+            //    return StatusCode(500, $"An error occurred: {ex.Message}");
+            //}
+            return Ok(_statisticsRepository.CategoryNameByMaxProductCount());
         }
 
         [HttpGet("CityNameByMaxProductCount")]

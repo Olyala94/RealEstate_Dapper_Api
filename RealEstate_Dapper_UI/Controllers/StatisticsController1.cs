@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace RealEstate_Dapper_UI.Controllers
 {
@@ -38,14 +39,23 @@ namespace RealEstate_Dapper_UI.Controllers
             var client4 = _httpClientFactory.CreateClient();
             var responseMessage4 = await client4.GetAsync("https://localhost:44327/api/Statistics/AverageProductPriceByRent");
             var jsonData4 = await responseMessage4.Content.ReadAsStringAsync();
-            ViewBag.averageProductPriceByRent = jsonData4;
+            decimal averageProductPrice = decimal.Parse(jsonData4, CultureInfo.InvariantCulture);
+            ViewBag.averageProductPriceByRent = averageProductPrice.ToString("0.00");
             #endregion
+
+            //#region Statistics(4)
+            //var client4 = _httpClientFactory.CreateClient();
+            //var responseMessage4 = await client4.GetAsync("https://localhost:44327/api/Statistics/AverageProductPriceByRent");
+            //var jsonData4 = await responseMessage4.Content.ReadAsStringAsync();
+            //ViewBag.averageProductPriceByRent = jsonData4;
+            //#endregion
 
             #region Statistics(5)
             var client5 = _httpClientFactory.CreateClient();
             var responseMessage5 = await client5.GetAsync("https://localhost:44327/api/Statistics/AverageProductPriceBySale");
             var jsonData5 = await responseMessage5.Content.ReadAsStringAsync();
-            ViewBag.averageProductPriceBySale = jsonData5;
+            decimal averageProductPricebySale = decimal.Parse(jsonData5, CultureInfo.InvariantCulture);
+            ViewBag.averageProductPriceBySale = averageProductPricebySale.ToString("0.00");
             #endregion
 
             #region Statistics(6)
@@ -96,6 +106,16 @@ namespace RealEstate_Dapper_UI.Controllers
             var jsonData12 = await responseMessage12.Content.ReadAsStringAsync();
             ViewBag.lastProductPrice = jsonData12;
             #endregion
+
+
+            //#region Statistics(13)
+            //var client13 = _httpClientFactory.CreateClient();
+            //var responseMessage13 = await client13.GetAsync("https://localhost:44327/api/Statistics/NewestBuildingYear");
+            //var jsonData13 = await responseMessage13.Content.ReadAsStringAsync();
+            //int buildingYear = int.Parse(jsonData13);
+            //int buildingAge = DateTime.Now.Year - buildingYear;
+            //ViewBag.newestBuildingAge = buildingAge;
+            //#endregion
 
             #region Statistics(13)
             var client13 = _httpClientFactory.CreateClient();

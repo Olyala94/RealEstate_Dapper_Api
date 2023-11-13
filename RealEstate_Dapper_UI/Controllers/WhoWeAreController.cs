@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RealEstate_Dapper_UI.Dtos.EmployeeDtos;
+using RealEstate_Dapper_UI.Dtos.WhoWeAreDtos;
 using System.Text;
 
 namespace RealEstate_Dapper_UI.Controllers
 {
-    public class EmployeeController : Controller
+    public class WhoWeAreController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public EmployeeController(IHttpClientFactory httpClientFactory)
+        public WhoWeAreController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -17,11 +17,11 @@ namespace RealEstate_Dapper_UI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44327/api/Employees");
+            var responseMessage = await client.GetAsync("https://localhost:44327/api/WhoWeAreDetail");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultEmployeeDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultWhoWeAreDetailDto>>(jsonData);
                 return View(values);
             };
 
@@ -29,28 +29,29 @@ namespace RealEstate_Dapper_UI.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateEmployee()
+        public IActionResult CreateWhoWeAreDetail()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateEmployee(CreateEmployeeDto createEmployeeDto)
+        public async Task<IActionResult> CreateWhoWeAreDetail(CreateWhoWeAreDetailDto createWhoWeAreDetailDto)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createEmployeeDto);
+            var jsonData = JsonConvert.SerializeObject(createWhoWeAreDetailDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:44327/api/Employees", stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:44327/api/WhoWeAreDetail", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
             return View();
         }
-        public async Task<IActionResult> DeleteEmployee(int id)
+
+        public async Task<IActionResult> DeleteWhoWeAreDetail(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:44327/api/Employees/{id}");
+            var responseMessage = await client.DeleteAsync($"https://localhost:44327/api/WhoWeAreDetail/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -59,15 +60,15 @@ namespace RealEstate_Dapper_UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> UpdateEmployee(int id)
+        public async Task<IActionResult> UpdateWhoWeAreDetail(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:44327/api/Employees/{id}");
+            var responseMessage = await client.GetAsync($"https://localhost:44327/api/WhoWeAreDetail/{id}");
             //Eğer Başarılı ise beni value gönder!!!
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateEmployeeDto>(jsonData);
+                var values = JsonConvert.DeserializeObject<UpdateWhoWeAreDetailDto>(jsonData);
                 return View(values);
             }
             //Eğer başarılı dönmediyse aynı sayfaya beni geri döndür!!!
@@ -75,12 +76,12 @@ namespace RealEstate_Dapper_UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateEmployee(UpdateEmployeeDto updateEmployeeDto)
+        public async Task<IActionResult> UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDto updateWhoWeAreDetailDto)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateEmployeeDto);
+            var jsonData = JsonConvert.SerializeObject(updateWhoWeAreDetailDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:44327/api/Employees/", stringContent);
+            var responseMessage = await client.PutAsync("https://localhost:44327/api/WhoWeAreDetail/", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");

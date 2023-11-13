@@ -11,8 +11,8 @@ namespace RealEstate_Dapper_Api.Repositories.ServiceRepository
 
         void DeleteService(int id);
 
-        void UpdateService(UpdateCategoryDto updateCategoryDto);
+        void UpdateService(UpdateServiceDto updateServiceDto);
 
-        Task<GetByIdServiceDto> GetCService(int id);
+        Task<GetByIdServiceDto> GetServiceById(int id);
     }
 }

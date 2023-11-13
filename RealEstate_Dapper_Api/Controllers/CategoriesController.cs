@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RealEstate_Dapper_Api.Dtos.CategoryDtos;
 using RealEstate_Dapper_Api.Repositories.CategoryRepositories;
 
@@ -20,7 +19,7 @@ namespace RealEstate_Dapper_Api.Controllers
         public async Task<IActionResult> CategoryList()
         {
             var values = await _categoryRepository.GetAllCategoryAsync();
-            return Ok(values);  
+            return Ok(values);
         }
 
         [HttpPost]

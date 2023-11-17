@@ -39,7 +39,7 @@ namespace RealEstate_Dapper_Api.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateEmployee(UpdateEmployeeDto updateEmployeeDto)
         {
-            _employeeRepository.UpdateEmployee(updateEmployeeDto);
+             _employeeRepository.UpdateEmployee(updateEmployeeDto);
             return Ok("Personel Başarıyla Güncellendi");
         }
 

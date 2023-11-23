@@ -26,7 +26,7 @@ namespace RealEstate_Dapper_Api.Controllers
         public async Task<IActionResult> CreateService(CreateServiceDto createServiceDto)
         {
              _serviceRepository.CreateService(createServiceDto);
-            return Ok("HHizmet Kısmı Başarılı Bir Şekilde Eklendi");
+            return Ok("Hizmet Kısmı Başarılı Bir Şekilde Eklendi");
         }
 
         [HttpDelete("{id}")]

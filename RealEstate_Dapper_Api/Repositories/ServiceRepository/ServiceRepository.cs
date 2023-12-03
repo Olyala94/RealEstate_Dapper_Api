@@ -1,7 +1,5 @@
 ﻿using Dapper;
-using RealEstate_Dapper_Api.Dtos.CategoryDtos;
 using RealEstate_Dapper_Api.Dtos.ServiceDtos;
-using RealEstate_Dapper_Api.Dtos.WhoWeAreDetailDtos;
 using RealEstate_Dapper_Api.Models.DapperContext;
 
 namespace RealEstate_Dapper_Api.Repositories.ServiceRepository
@@ -20,7 +18,7 @@ namespace RealEstate_Dapper_Api.Repositories.ServiceRepository
             string query = "insert into Services (ServiceName, ServiceStatus) values (@serviceName, @serviceStatus)";
             var parameters = new DynamicParameters();
             parameters.Add("@serviceName", createServiceDto.ServiceName);
-            parameters.Add("@serviceStatus", true);         
+            parameters.Add("@serviceStatus", true);
             using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
@@ -61,7 +59,7 @@ namespace RealEstate_Dapper_Api.Repositories.ServiceRepository
             }
         }
 
-        public async void UpdateService(UpdateServiceDto  updateServiceDto)
+        public async void UpdateService(UpdateServiceDto updateServiceDto)
         {
             string query = "Update Services Set ServiceName=@serviceName, ServiceStatus=@serviceStatus where ServiceID=@serviceID";
             var parameters = new DynamicParameters();

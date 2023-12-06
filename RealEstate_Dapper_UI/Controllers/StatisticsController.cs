@@ -3,11 +3,11 @@ using System.Globalization;
 
 namespace RealEstate_Dapper_UI.Controllers
 {
-    public class StatisticsController1 : Controller
+    public class StatisticsController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public StatisticsController1(IHttpClientFactory httpClientFactory)
+        public StatisticsController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }

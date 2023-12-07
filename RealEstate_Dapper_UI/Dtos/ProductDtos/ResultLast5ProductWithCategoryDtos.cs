@@ -1,6 +1,6 @@
-﻿namespace RealEstate_Dapper_Api.Dtos.ProductDtos
+﻿namespace RealEstate_Dapper_UI.Dtos.ProductDtos
 {
-    public class ResultProductDtos
+    public class ResultLast5ProductWithCategoryDtos
     {
         public int ProductID { get; set; }
 
@@ -13,5 +13,7 @@
         public string District { get; set; }
 
         public int ProductCategory { get; set; }
+        public string CategoryName { get; set; }
+        public DateTime AdvertisementDate { get; set; }
     }
 }

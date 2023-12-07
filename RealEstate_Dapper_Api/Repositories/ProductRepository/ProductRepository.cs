@@ -14,12 +14,12 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             _context = context;
         }
 
-        public async Task<List<ResultProductDtos>> GetAllProductAsync()
+        public async Task<List<ResultProductDto>> GetAllProductAsync()
         {
             string query = "Select * From Product";
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<ResultProductDtos>(query);
+                var values = await connection.QueryAsync<ResultProductDto>(query);
                 return values.ToList();
             }
         }
@@ -34,12 +34,12 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             }
         }
 
-        public async Task<List<ResultProductDtos>> GetLast5ProductAsync()
+        public async Task<List<ResultLast5ProductWithCategoryDto>> GetLast5ProductAsync()
         {
-            string query = "Select Top(5) * From Product Where Type='Kiralik' Order By ProductID Desc";
+            string query = "Select Top(5) ProductID,Title, Price,City,District,ProductCategory,CategoryName,AdvertisementDate From Product Inner Join Category On Product.ProductCategory = Category.CategoryID Where Type='Kiralik' Order By ProductID Desc";
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<ResultProductDtos>(query);
+                var values = await connection.QueryAsync<ResultLast5ProductWithCategoryDto>(query);
                 return values.ToList();
             }
         }

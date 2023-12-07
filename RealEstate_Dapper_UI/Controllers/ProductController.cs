@@ -26,6 +26,7 @@ namespace RealEstate_Dapper_UI.Controllers
             }
             return View();
         }
+
         [HttpGet]
         public async Task<IActionResult> CreateProduct()
         {

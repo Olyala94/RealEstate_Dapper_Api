@@ -13,3 +13,7 @@
 **Dashboard kısmında Son 4 Gelen Mesajlar Listeleme işlemi yapıldı.**  <hr/>
 
 ![Dashbord Son 4 Mesajı Listeleme](https://github.com/Olyala94/RealEstate_Dapper_Api/assets/119108499/4c47bbcc-ca5c-4a9d-8ad5-b347c740d234)
+<hr/>
+**Günün Fırsatı kısmı yapıldı Güncellem   Silme  vs işlemlerde yapıldı.** <hr/>
+
+![Günün Fırsatı kısmı yapıldı Güncellem   Silme  vs işlemlerde yapıldı](https://github.com/Olyala94/RealEstate_Dapper_Api/assets/119108499/45373612-d85d-4535-a29a-b37331b0f12b)

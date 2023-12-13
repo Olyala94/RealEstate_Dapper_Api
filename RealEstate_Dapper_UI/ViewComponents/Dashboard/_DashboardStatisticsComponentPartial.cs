@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
-using System.Net.Http;
 
 namespace RealEstate_Dapper_UI.ViewComponents.Dashboard
 {

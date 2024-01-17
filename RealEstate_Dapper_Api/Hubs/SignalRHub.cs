@@ -10,7 +10,8 @@ namespace RealEstate_Dapper_Api.Hubs
         {
             _httpClientFactory = httpClientFactory;
         }
-        public async Task SenCategoryCount()
+
+        public async Task SendCategoryCount()
         {
             var client1 = _httpClientFactory.CreateClient();
             var responseMessage1 = await client1.GetAsync("https://localhost:44327/api/Statistics/CategoryCount");

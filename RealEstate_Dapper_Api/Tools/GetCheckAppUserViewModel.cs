@@ -5,6 +5,6 @@
         public int Id { get; set; }
         public string Username { get; set; }
         public string Role { get; set; }
-        public bool IsExist { get; set; }  //Bu kulllanıcıyı içeriyormu , tanımlı ?
+        public bool IsExist { get; set; }  //Bu kulllanıcıyı içeriyormu , tanımlı mı?
     }
 }

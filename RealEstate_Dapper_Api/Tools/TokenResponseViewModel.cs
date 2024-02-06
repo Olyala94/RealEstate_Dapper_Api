@@ -2,13 +2,13 @@
 {
     public class TokenResponseViewModel
     {
-        public TokenResponseViewModel(int token, DateTime expireDate)
+        public TokenResponseViewModel(string token, DateTime expireDate)
         {
             Token = token;
             ExpireDate = expireDate;
         }
 
-        public int Token { get; set; }
+        public string Token { get; set; }
         public DateTime ExpireDate { get; set; } 
     }
 }

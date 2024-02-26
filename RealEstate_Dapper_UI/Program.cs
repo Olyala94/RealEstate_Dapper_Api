@@ -1,7 +1,18 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddHttpClient();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
+{
+    opt.LoginPath = "/Login/Index";
+    opt.LogoutPath = "/Login/Logout";
+    opt.AccessDeniedPath = "/Pages/AccessDenied"; 
+    opt.Cookie.HttpOnly = true;
+    opt.Cookie.SameSite=SameSiteMode.Strict;
+    opt.Cookie.Name = "RealEstateCookie";
+});   
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -19,6 +30,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

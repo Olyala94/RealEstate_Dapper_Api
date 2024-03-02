@@ -27,6 +27,7 @@ builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddTransient<IStatisticsRepository, StatisticsRepository>();
 builder.Services.AddTransient<IContactRepository, ContactRepository>();
 builder.Services.AddTransient<IToDoListRepository, ToDoListRepository>();
+//builder.Services.AddScoped<ILoginService, LoginService>();
 
 //SignalR && AddCors 
 builder.Services.AddCors(opt=>
